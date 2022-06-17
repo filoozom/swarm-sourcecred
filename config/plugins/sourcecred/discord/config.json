@@ -1,0 +1,24 @@
+[
+  {
+    "channelWeightConfig": {
+      "defaultWeight": 1,
+      "weights": {}
+    },
+    "guildId": "799027393297514537",
+    "includeNsfwChannels": false,
+    "propsChannels": [],
+    "reactionWeightConfig": {
+      "applyAveraging": false,
+      "defaultWeight": 1,
+      "weights": {
+        "👍": 1,
+        "🐝": 5,
+        "swarm_orange:943176512385994832": 10
+      }
+    },
+    "roleWeightConfig": {
+      "defaultWeight": 1,
+      "weights": {}
+    }
+  }
+]
