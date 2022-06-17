@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  # As well as every 24 hours (at 0:00 UTC).
-  schedule:
-    - cron: 0 0 * * *
 
 jobs:
   GenerateCredInstance:
@@ -18,22 +15,8 @@ jobs:
         with:
           persist-credentials: false # Required to make github pages deployment work correctly
 
-      - name: Cache Data # Cache SourceCred Data, invalidating if any of the config changes or the SC version is updated
-        uses: actions/cache@v2.1.6
-        with:
-          path: '**/cache'
-          key: SC-${{ runner.os }}-${{ hashFiles('**/config.json', '**/sourcecred.json', '**/yarn.lock') }}
-
       - name: Install Packages 🔧
         run: yarn --frozen-lockfile
-
-      - name: Load Data and Compute Cred 🧮
-        run: |
-          yarn sourcecred go
-          yarn sourcecred analysis
-        env:
-          SOURCECRED_GITHUB_TOKEN: ${{ secrets.SOURCECRED_GITHUB_TOKEN }}
-          SOURCECRED_DISCORD_TOKEN: ${{ secrets.SOURCECRED_DISCORD_TOKEN }}
 
       - name: Generate Frontend 🏗
         run: |
